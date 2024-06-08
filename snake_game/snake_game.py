@@ -11,6 +11,7 @@ black = (0, 0, 0)
 red = (213, 50, 80)
 green = (0, 255, 0)
 blue = (50, 153, 213)
+purple = (128, 0, 128)
 
 # Screen dimensions
 dis_width = 800
@@ -63,7 +64,7 @@ def gameLoop():
     while not game_over:
 
         while game_close == True:
-            dis.fill(blue)
+            dis.fill(purple)
             message("You Lost! Press Q-Quit or C-Play Again", red)
             your_score(Length_of_snake - 1)
             pygame.display.update()
@@ -97,7 +98,7 @@ def gameLoop():
             game_close = True
         x1 += x1_change
         y1 += y1_change
-        dis.fill(blue)
+        dis.fill(purple)
         pygame.draw.rect(dis, green, [foodx, foody, snake_block, snake_block])
         snake_Head = []
         snake_Head.append(x1)
