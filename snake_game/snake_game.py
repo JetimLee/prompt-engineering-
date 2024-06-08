@@ -11,7 +11,7 @@ black = (0, 0, 0)
 red = (213, 50, 80)
 green = (0, 255, 0)
 blue = (50, 153, 213)
-purple = (128, 0, 128)
+purple = (128, 0, 128)  # New purple color
 
 # Screen dimensions
 dis_width = 800
@@ -19,11 +19,10 @@ dis_height = 600
 
 # Create the display
 dis = pygame.display.set_mode((dis_width, dis_height))
-pygame.display.set_caption("Snake Game by ChatGPT")
+pygame.display.set_caption("Snake Game by Gavin Coulson")
 
 clock = pygame.time.Clock()
 snake_block = 10
-snake_speed = 15
 
 # Font style
 font_style = pygame.font.SysFont("bahnschrift", 25)
@@ -63,8 +62,8 @@ def gameLoop():
 
     while not game_over:
 
-        while game_close == True:
-            dis.fill(purple)
+        while game_close:
+            dis.fill(purple)  # Change background color to purple
             message("You Lost! Press Q-Quit or C-Play Again", red)
             your_score(Length_of_snake - 1)
             pygame.display.update()
@@ -98,7 +97,7 @@ def gameLoop():
             game_close = True
         x1 += x1_change
         y1 += y1_change
-        dis.fill(purple)
+        dis.fill(purple)  # Change background color to purple
         pygame.draw.rect(dis, green, [foodx, foody, snake_block, snake_block])
         snake_Head = []
         snake_Head.append(x1)
@@ -120,6 +119,10 @@ def gameLoop():
             foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
             foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
             Length_of_snake += 1
+
+        snake_speed = 15 + (
+            Length_of_snake // 5
+        )  # Increase speed based on the length of the snake
 
         clock.tick(snake_speed)
 
