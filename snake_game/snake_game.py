@@ -64,7 +64,7 @@ def gameLoop():
 
         while game_close:
             dis.fill(purple)  # Change background color to purple
-            message("You Lost! Press Q-Quit or C-Play Again", red)
+            message("Game Over! Womp Womp. Press Q to quit or C to play again.", red)
             your_score(Length_of_snake - 1)
             pygame.display.update()
 
